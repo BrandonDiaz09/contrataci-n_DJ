@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>.:: Reservaciones y contrataciones ::.</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kqIez27REHgP8aY6PLeiJieJx1sJGt7bOnSeaaC1qUWZh58EJtXWgmJUyvt3mAmP" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="icon" type="image/png" href="./icono/form.png">
+  <link rel="stylesheet" type="text/css" href="./styles/styles_form.css">
+  <script src="./JavaScript/form.js"></script>
+</head>
+
+<body>
+  <header class="p-3" style="background-color: rgba(0, 0, 0, 0.7); font-family: var(--bs-body-font-family);">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <!-- <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+      -->
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="./index.html" class="nav-link px-2 text-secondary">Inicio</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">Productos</a></li>
+          <li><a href="./form.html" class="nav-link px-2 text-white">Contrataciones</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">Acerca</a></li>
+        </ul>
+
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-light me-2">Iniciar sesión</button>
+          <button type="button" class="btn btn-warning">Registrarse</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+    <div class="row">
+      <div class="col-12">
+        <h1>Reservaciones y contrataciones</h1>
+        <h2>Por favor, ingrese los datos solicitados en el siguiente formulario, recuerde revisar muy bien los datos antes de enviar.</h2>
+      </div>
+    </div>
+
+    <form action="./index.html" method="post" class="animated-element" onsubmit="return validarRFC() && validarEdad() && validarNombre() && validarTelefono()">
+      <fieldset>
+        <legend>Información de Contacto</legend>
+        <div class="row">
+          <div class="col-12">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" class="animated-element" placeholder="Enrique" onchange="validarNombre()" required><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="nombre">Apellido Paterno:</label>
+            <input type="text" id="paterno" name="paterno" class="animated-element" placeholder="Díaz" onchange="validarNombre()" required><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="nombre">Apellido Materno:</label>
+            <input type="text" id="materno" name="materno" class="animated-element" placeholder="Ortiz" onchange="validarNombre()" required><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" class="animated-element" placeholder="5544332211" onchange="validarTelefono()" required><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" class="animated-element" placeholder="you@example.com" required><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="entidad">Entidad Federativa:</label>
+            <select id="entidad" name="entidad" onchange="estadoSeleccionado()" required>
+              <option value="Seleccionar">Seleccionar</option>
+              <option value="Aguascalientes">Aguascalientes</option>
+              <option value="Baja California">Baja California</option>
+              <option value="Baja California Sur">Baja California Sur</option>
+              <option value="Campeche">Campeche</option>
+              <option value="Coahuila">Coahuila</option>
+              <option value="Colima">Colima</option>
+              <option value="Chiapas">Chiapas</option>
+              <option value="Chihuahua">Chihuahua</option>
+              <option value="Ciudad de México">Ciudad de México</option>
+              <option value="Durango">Durango</option>
+              <option value="Guanajuato">Guanajuato</option>
+              <option value="Guerrero">Guerrero</option>
+              <option value="Hidalgo">Hidalgo</option>
+              <option value="Jalisco">Jalisco</option>
+              <option value="México">México</option>
+              <option value="Michoacán">Michoacán</option>
+              <option value="Morelos">Morelos</option>
+              <option value="Nayarit">Nayarit</option>
+              <option value="Nuevo León">Nuevo León</option>
+              <option value="Oaxaca">Oaxaca</option>
+              <option value="Puebla">Puebla</option>
+              <option value="Querétaro">Querétaro</option>
+              <option value="Quintana Roo">Quintana Roo</option>
+              <option value="San Luis Potosí">San Luis Potosí</option>
+              <option value="Sinaloa">Sinaloa</option>
+              <option value="Sonora">Sonora</option>
+              <option value="Tabasco">Tabasco</option>
+              <option value="Tamaulipas">Tamaulipas</option>
+              <option value="Tlaxcala">Tlaxcala</option>
+              <option value="Veracruz">Veracruz</option>
+              <option value="Yucatán">Yucatán</option>
+              <option value="Zacatecas">Zacatecas</option>
+            </select><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="alcaldia">Alcaldía (solo Ciudad de México):</label>
+            <select id="alcaldia" name="alcaldia">
+              <option value="">Selecciona una opción</option>
+              <option value="Álvaro Obregón">Álvaro Obregón</option>
+              <option value="Azcapotzalco">Azcapotzalco</option>
+              <option value="Benito Juárez">Benito Juárez</option>
+              <option value="Coyoacán">Coyoacán</option>
+              <option value="Cuajimalpa de Morelos">Cuajimalpa de Morelos</option>
+              <option value="Cuauhtémoc">Cuauhtémoc</option>
+              <option value="Gustavo A. Madero">Gustavo A. Madero</option>
+              <option value="Iztacalco">Iztacalco</option>
+              <option value="Iztapalapa">Iztapalapa</option>
+              <option value="La Magdalena Contreras">La Magdalena Contreras</option>
+              <option value="Miguel Hidalgo">Miguel Hidalgo</option>
+              <option value="Milpa Alta">Milpa Alta</option>
+              <option value="Tláhuac">Tláhuac</option>
+              <option value="Tlalpan">Tlalpan</option>
+              <option value="Venustiano Carranza">Venustiano Carranza</option>
+              <option value="Xochimilco">Xochimilco</option>
+              <option value="No vivo en la Ciudad de México">No vivo en la Ciudad de México</option>
+            </select><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="animated-element" onchange="validarEdad()" required><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="rfc">RFC:</label>
+            <input type="text" id="rfc" name="rfc" class="animated-element" onchange="validarRFC()" placeholder="PPMN00112222HHH" required><br>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Información del Evento</legend>
+        <div class="row">
+          <div class="col-12">
+            <label for="tipo">Tipo de Evento:</label>
+            <select id="tipo" name="tipo" onchange="mostrarCampoEvento()" required>
+              <option value="Seleccionar">Seleccionar</option>
+              <option value="Bautizo">Bautizo</option>
+              <option value="Primera comunión">Primera comunión</option>
+              <option value="XV años">XV años</option>
+              <option value="Boda">Boda</option>
+              <option value="Cumpleaños">Cumpleaños</option>
+              <option value="Otro">Otro</option>
+            </select><br>
+          </div>
+        </div>
+
+        <div class="row" id="campoEvento" style="display: none;">
+          <div class="col-12">
+            <label for="evento">Evento (A continuación escriba el tipo de evento que desea realizar): </label>
+            <input type="text" id="evento" name="evento" class="animated-element" placeholder="Aniversario"><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="numPersonas">Número de Personas:</label>
+            <input type="number" id="numPersonas" name="numPersonas" min="75" max="200" class="animated-element" placeholder="99" required><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="fechaEvento">Fecha del evento:</label>
+            <input type="date" id="fechaEvento" name="fechaEvento" min="30/05/2023" class="animated-element" required><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="horaEvento">Horario del evento:</label>
+            <input type="time" id="horaEvento" name="horaEvento" min="8:00:00" max="20:00:00" class="animated-element" required><br>
+          </div>
+        </div>
+      </fieldset>
+
+          <button type="submit" class="btn btn-outline-light" id="registrar" style="font-weight: bold;">Registrar</button>
+          <button type="reset" class="btn btn-outline-warning" id="limpiar" style="font-weight: bold;">Limpiar</button>
+    </form>
+    <br><br>
+
+    <footer>
+      <div class="row">
+        <div class="col-12">
+          <p>&copy; 2023 - Todos los derechos reservados</p>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>
