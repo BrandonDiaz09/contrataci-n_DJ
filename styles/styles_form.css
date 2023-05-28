@@ -80,6 +80,10 @@ select {
   color: #333333;
 }
 
+select{
+  width: 106% !important;
+}
+
 button {
   display: flexbox;
   align-items: center;
@@ -91,7 +95,6 @@ button {
   border-radius: 7px;
   cursor: pointer;
   font-size: 16px;
-  margin-right: 10px;
 }
 
 .animated-element {
