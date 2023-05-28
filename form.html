@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>.:: Reservaciones y contrataciones ::.</title>
-  <link rel="icon" type="image/png" href="./icon/form.png">
+  <link rel="icon" type="image/png" href="./icono/form.png">
   <link rel="stylesheet" type="text/css" href="./styles/styles_form.css">
   <script src="./JavaScript/form.js"></script>
 </head>
@@ -37,6 +37,20 @@
           <div class="col-12">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" class="animated-element" onchange="validarNombre()" required><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="nombre">Apellido Paterno:</label>
+            <input type="text" id="paterno" name="paterno" class="animated-element" onchange="validarNombre()" required><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="nombre">Apellido Materno:</label>
+            <input type="text" id="materno" name="materno" class="animated-element" onchange="validarNombre()" required><br>
           </div>
         </div>
 
@@ -167,12 +181,8 @@
         </div>
       </fieldset>
 
-      <div class="row">
-        <div class="col-12"  id="botones">
           <button type="submit" class="animated-element">Registrar</button>
           <button type="reset" class="animated-element">Limpiar</button>
-        </div>
-      </div>
     </form>
     <br><br>
 
