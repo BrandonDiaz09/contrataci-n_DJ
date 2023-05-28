@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>.:: Reservaciones y contrataciones ::.</title>
+  <link rel="icon" type="image/png" href="./icono/form.png">
+  <link rel="stylesheet" type="text/css" href="./styles/styles_form.css">
+  <script src="./JavaScript/form.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Comprobante</a></li>
+        <li><a href="./form.html">Contrataciones</a></li>
+        <li><a href="#">Inciar sesión</a></li>
+      </ul>
+    </nav>
+  </header>
+
+    <div class="row">
+      <div class="col-12">
+        <h1>Reservaciones y contrataciones</h1>
+        <h2>Por favor, ingrese los datos solicitados en el siguiente formulario, recuerde revisar muy bien los datos antes de enviar.</h2>
+      </div>
+    </div>
+
+    <form action="#" method="post" class="animated-element" onsubmit="return validarRFC() && validarEdad() && validarNombre() && validarTelefono()">
+      <fieldset>
+        <legend>Información de Contacto</legend>
+        <div class="row">
+          <div class="col-12">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" class="animated-element" onchange="validarNombre()" required><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="nombre">Apellido Paterno:</label>
+            <input type="text" id="paterno" name="paterno" class="animated-element" onchange="validarNombre()" required><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="nombre">Apellido Materno:</label>
+            <input type="text" id="materno" name="materno" class="animated-element" onchange="validarNombre()" required><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" class="animated-element" onchange="validarTelefono()" required><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" class="animated-element" required><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="entidad">Entidad Federativa:</label>
+            <select id="entidad" name="entidad" required>
+              <option value="Seleccionar">Seleccionar</option>
+              <option value="Aguascalientes">Aguascalientes</option>
+              <option value="Baja California">Baja California</option>
+              <option value="Baja California Sur">Baja California Sur</option>
+              <option value="Campeche">Campeche</option>
+              <option value="Coahuila">Coahuila</option>
+              <option value="Colima">Colima</option>
+              <option value="Chiapas">Chiapas</option>
+              <option value="Chihuahua">Chihuahua</option>
+              <option value="Ciudad de México">Ciudad de México</option>
+              <option value="Durango">Durango</option>
+              <option value="Guanajuato">Guanajuato</option>
+              <option value="Guerrero">Guerrero</option>
+              <option value="Hidalgo">Hidalgo</option>
+              <option value="Jalisco">Jalisco</option>
+              <option value="México">México</option>
+              <option value="Michoacán">Michoacán</option>
+              <option value="Morelos">Morelos</option>
+              <option value="Nayarit">Nayarit</option>
+              <option value="Nuevo León">Nuevo León</option>
+              <option value="Oaxaca">Oaxaca</option>
+              <option value="Puebla">Puebla</option>
+              <option value="Querétaro">Querétaro</option>
+              <option value="Quintana Roo">Quintana Roo</option>
+              <option value="San Luis Potosí">San Luis Potosí</option>
+              <option value="Sinaloa">Sinaloa</option>
+              <option value="Sonora">Sonora</option>
+              <option value="Tabasco">Tabasco</option>
+              <option value="Tamaulipas">Tamaulipas</option>
+              <option value="Tlaxcala">Tlaxcala</option>
+              <option value="Veracruz">Veracruz</option>
+              <option value="Yucatán">Yucatán</option>
+              <option value="Zacatecas">Zacatecas</option>
+            </select><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="alcaldia">Alcaldía (solo Ciudad de México):</label>
+            <select id="alcaldia" name="alcaldia">
+              <option value="">Selecciona una opción</option>
+              <option value="Álvaro Obregón">Álvaro Obregón</option>
+              <option value="Azcapotzalco">Azcapotzalco</option>
+              <option value="Benito Juárez">Benito Juárez</option>
+              <option value="Coyoacán">Coyoacán</option>
+              <option value="Cuajimalpa de Morelos">Cuajimalpa de Morelos</option>
+              <option value="Cuauhtémoc">Cuauhtémoc</option>
+              <option value="Gustavo A. Madero">Gustavo A. Madero</option>
+              <option value="Iztacalco">Iztacalco</option>
+              <option value="Iztapalapa">Iztapalapa</option>
+              <option value="La Magdalena Contreras">La Magdalena Contreras</option>
+              <option value="Miguel Hidalgo">Miguel Hidalgo</option>
+              <option value="Milpa Alta">Milpa Alta</option>
+              <option value="Tláhuac">Tláhuac</option>
+              <option value="Tlalpan">Tlalpan</option>
+              <option value="Venustiano Carranza">Venustiano Carranza</option>
+              <option value="Xochimilco">Xochimilco</option>
+            </select><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="animated-element" onchange="validarEdad()" required><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="rfc">RFC:</label>
+            <input type="text" id="rfc" name="rfc" class="animated-element" onchange="validarRFC()" required><br>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Información del Evento</legend>
+        <div class="row">
+          <div class="col-12">
+            <label for="tipo">Tipo de Evento:</label>
+            <select id="tipo" name="tipo" onchange="mostrarCampoEvento()" required>
+              <option value="Seleccionar">Seleccionar</option>
+              <option value="Bautizo">Bautizo</option>
+              <option value="Primera comunión">Primera comunión</option>
+              <option value="XV años">XV años</option>
+              <option value="Boda">Boda</option>
+              <option value="Cumpleaños">Cumpleaños</option>
+              <option value="Otro">Otro</option>
+            </select><br>
+          </div>
+        </div>
+
+        <div class="row" id="campoEvento" style="display: none;">
+          <div class="col-12">
+            <label for="evento">Evento (A continuación escriba el tipo de evento que desea realizar): </label>
+            <input type="text" id="evento" name="evento" class="animated-element"><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="numPersonas">Número de Personas:</label>
+            <input type="number" id="numPersonas" name="numPersonas" min="75" max="200" class="animated-element" required><br>
+          </div>
+        </div>
+      </fieldset>
+
+          <button type="submit" class="animated-element">Registrar</button>
+          <button type="reset" class="animated-element">Limpiar</button>
+    </form>
+    <br><br>
+
+    <footer>
+      <div class="row">
+        <div class="col-12">
+          <p>&copy; 2023 - Todos los derechos reservados</p>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>
