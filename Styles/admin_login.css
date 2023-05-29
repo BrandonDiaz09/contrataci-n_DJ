@@ -1,0 +1,69 @@
+body {
+    background-color:rgb(3, 0, 27);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+input{
+    background-color: rgb(3, 0, 27);
+    color: white;
+    caret-color: white;
+}
+
+#login_window{
+    position: relative;
+}
+#submit_button{
+    position:absolute;
+    right: 12px;
+    bottom: 8px;
+}
+#submit_container{
+    height: 30px;
+}
+
+.neon-border {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    animation: rotate-colors 10s linear infinite, glow-border 2s ease-in-out infinite;
+}
+
+.neon-border span {
+    display: inline-block;
+    color: white;
+}
+
+@keyframes rotate-colors {
+    0% {
+        box-shadow: 0 0 10px blue;
+    }
+    25% {
+        box-shadow: 0 0 10px pink;
+    }
+    50% {
+        box-shadow: 0 0 10px limegreen;
+    }
+    75% {
+        box-shadow: 0 0 10px blue;
+    }
+    100% {
+        box-shadow: 0 0 10px pink;
+    }
+}
+
+@keyframes glow-border {
+    0% {
+        border-color: transparent;
+    }
+    50% {
+        border-color: white;
+    }
+    100% {
+        border-color: transparent;
+    }
+}
+
