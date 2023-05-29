@@ -63,6 +63,10 @@ header div{
   padding-top: 90px;
   padding-bottom: 90px;
 }
+.logo {
+  width: 60px; 
+  height: auto; 
+}
 /* SECTION TITLE */
 .section-title {
     margin-bottom: 60px;
