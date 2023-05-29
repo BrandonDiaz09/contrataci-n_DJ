@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <form action="./index.html" method="post" class="animated-element" onsubmit="return validarRFC() && validarEdad() && validarNombre() && validarTelefono()">
+    <form action="./php/procesaDatos.php" method="post" class="animated-element" onsubmit="return validarRFC() && validarEdad() && validarNombre() && validarTelefono()">
       <fieldset>
         <legend>Información de Contacto</legend>
         <div class="row">
@@ -55,14 +55,14 @@
 
         <div class="row">
           <div class="col-12">
-            <label for="nombre">Apellido Paterno:</label>
+            <label for="paterno">Apellido Paterno:</label>
             <input type="text" id="paterno" name="paterno" class="animated-element" placeholder="Díaz" onchange="validarNombre()" required><br>
           </div>
         </div>
 
         <div class="row">
           <div class="col-12">
-            <label for="nombre">Apellido Materno:</label>
+            <label for="materno">Apellido Materno:</label>
             <input type="text" id="materno" name="materno" class="animated-element" placeholder="Ortiz" onchange="validarNombre()" required><br>
           </div>
         </div>
@@ -125,7 +125,7 @@
         <div class="row">
           <div class="col-12">
             <label for="alcaldia">Alcaldía (solo Ciudad de México):</label>
-            <select id="alcaldia" name="alcaldia">
+            <select id="alcaldia" name="alcaldia" required>
               <option value="">Selecciona una opción</option>
               <option value="Álvaro Obregón">Álvaro Obregón</option>
               <option value="Azcapotzalco">Azcapotzalco</option>
