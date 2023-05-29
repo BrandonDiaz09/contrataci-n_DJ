@@ -2,14 +2,16 @@ body{
     background-color: #000033;
     color: dodgerblue;
     height: 250rem;
+    margin: 0 0 0 0;
 }
 nav{
+    background-color: #3d0066;
     text-align: center;
-    margin-top: 1rem;
+    padding:1rem ;
     
 }
 a.navigation_anchor{
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family:sans-serif;
     text-decoration: none;
     font-size: 1.5rem;
     color: #fff;
