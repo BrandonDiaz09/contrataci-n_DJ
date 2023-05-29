@@ -6,7 +6,8 @@ function mostrarCampoEvento() {
 
     if (tipoEvento === "Otro") {
         campoEvento.style.display = "block";
-    } else {
+    }
+    else {
         campoEvento.style.display = "none";
     }
 }
@@ -85,3 +86,27 @@ function validarTelefono() {
 }
 var telefonoInput = document.getElementById("telefono");
 telefonoInput.addEventListener("input", validarTelefono);
+
+//Función para deshabilitar alcaldía
+function estadoSeleccionado() {
+    var estado = document.getElementById("entidad").value;
+    var alcaldiaSelect = document.getElementById("alcaldia");
+    
+    if (estado === "Ciudad de México") {
+      alcaldiaSelect.disabled = false;
+      removeOption(alcaldiaSelect, "No vivo en la Ciudad de México");
+    } else {
+      alcaldiaSelect.disabled = true;
+      alcaldiaSelect.value = "No vivo en la Ciudad de México";
+    }
+  }
+  //Función para remover opción "No vivo en la Ciudad de México"
+  function removeOption(selectElement, optionValue) {
+    var options = selectElement.options;
+    for (var i = 0; i < options.length; i++) {
+      if (options[i].value === optionValue) {
+        selectElement.remove(i);
+        break;
+      }
+    }
+  }
