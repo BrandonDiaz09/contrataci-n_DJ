@@ -4,8 +4,8 @@ body {
     font-family: 'Montserrat', sans-serif !important;
     color: #ffffff;
     margin: 0px;
-    background-color: #3d0066;
-    background-image: linear-gradient(45deg, #3722bf, #3d0066);
+    background-color: rgb(1, 1, 2);
+    /* background-image: linear-gradient(45deg, #150d48, #13021f); */
     background-size: 400% 400%;
     animation: neonGlow 5s ease-in-out infinite;
     overflow-x: hidden !important;
@@ -127,9 +127,47 @@ button {
 
 header {
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 10px 0;
+  padding: 0px 0;
 }
 
+#nav{
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.7),
+              -15rem 0rem 30px rgb(138, 36, 255),
+              20rem 0rem 30px rgb(0, 174, 255)
+              ;
+  font-family: var(--bs-body-font-family);
+}
+
+header div{
+  gap: 10%;
+}
+.nav-masthead .nav-link {
+  color: rgba(255, 255, 255, .5);
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+.section-padding {
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+.logo {
+  width: 60px; 
+  height: auto; 
+}
 footer {
   background-color: rgba(0, 0, 0, 0.7);
   color: #ffffff;
