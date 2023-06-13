@@ -1,9 +1,10 @@
-var nav = document.querySelector('nav');
+var currentPage = window.location.pathname.split('/').pop();
+var navLinks = document.querySelectorAll('.nav-link');
 
-window.addEventListener('scroll', function () {
-  if (window.pageYOffset > 100) {
-    nav.classList.add('navbar-bg', 'shadow');
-  } else {
-    nav.classList.remove('navbar-bg', 'shadow');
+for (var i = 0; i < navLinks.length; i++) {
+  var link = navLinks[i];
+
+  if (link.getAttribute('href') === currentPage) {
+    link.classList.add('active');
   }
-});
+}
