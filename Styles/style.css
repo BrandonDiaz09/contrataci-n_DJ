@@ -10,7 +10,7 @@ body{
  * Base structure
  */
 .banner-image{
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgb(2, 2, 5)), url('../Images/banner-image.jpg');
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgb(2, 2, 5)),url('../Images/banner-image1.jpg');
     background-size: cover;
 }
 
@@ -203,7 +203,7 @@ img {
   position: relative;
   display: inline-block;
   padding: 15px 30px;
-  color: #fff;
+  color: #f2e2fb;
   text-decoration: none;
   font-size: 24px;
   overflow: hidden;
