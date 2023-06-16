@@ -3,14 +3,22 @@
 function mostrarCampoEvento() {
     var tipoEvento = document.getElementById("tipo").value;
     var campoEvento = document.getElementById("campoEvento");
-
+  
     if (tipoEvento === "Otro") {
-        campoEvento.style.display = "block";
+      campoEvento.style.display = "block";
+      if (campoEvento.value.trim() === "") {
+        alert("El campo de evento no puede quedar vacío. Por favor, ingrese un valor, o seleccione una opción predefinida.");
+        campoEvento.focus();
+        return false; // Evita el envío del formulario
+      }
+    } else if (tipoEvento === "Seleccionar") {
+      alert("La opción seleccionar es inválida. Por favor, elija otra opción.");
+      document.getElementById("tipo").selectedIndex = 0; // Deseleccionar la opción incorrecta
+      return false;
+    } else {
+      campoEvento.style.display = "none";
     }
-    else {
-        campoEvento.style.display = "none";
-    }
-}
+  }  
 
 // Función para validar el campo RFC.
 function validarRFC() {
@@ -70,6 +78,40 @@ function validarNombre() {
 var nombreInput = document.getElementById("nombre");
 nombreInput.addEventListener("input", validarNombre);
 
+// Función para validar que campo Calle contenga unicamente letras y espacios.
+function validarCalle() {
+    var calleInput = document.getElementById("calle");
+    var calle = calleInput.value.trim();
+
+    var regexCalle = /^[A-Za-z\s]+$/;
+    if (!regexCalle.test(calle)) {
+        alert("La solo puede contener letras");
+        calleInput.focus();
+        return false;
+    }
+
+    return true;
+}
+var calleInput = document.getElementById("calle");
+calleInput.addEventListener("input", validarCalle);
+
+// Función para validar que campo Colonia contenga unicamente letras y espacios.
+function validarColonia() {
+    var coloniaInput = document.getElementById("colonia");
+    var colonia = coloniaInput.value.trim();
+
+    var regexColonia = /^[A-Za-z\s]+$/;
+    if (!regexColonia.test(colonia)) {
+        alert("La colonia solo puede contener letras");
+        coloniaInput.focus();
+        return false;
+    }
+
+    return true;
+}
+var coloniaInput = document.getElementById("colonia");
+coloniaInput.addEventListener("input", validarColonia);
+
 // Función para validar que el campo telefono lleve 10 digito y todos numeros.
 function validarTelefono() {
     var telefonoInput = document.getElementById("telefono");
@@ -87,26 +129,101 @@ function validarTelefono() {
 var telefonoInput = document.getElementById("telefono");
 telefonoInput.addEventListener("input", validarTelefono);
 
-//Función para deshabilitar alcaldía
-function estadoSeleccionado() {
-    var estado = document.getElementById("entidad").value;
-    var alcaldiaSelect = document.getElementById("alcaldia");
+// Función para validar que el campo número lleve 4 digito y todos numeros.
+function validarNumero() {
+    var numeroInput = document.getElementById("numero");
+    var numero = numeroInput.value.trim();
+
+    var regexnumero = /^\d{1,4}$/;
+    if (!regexnumero.test(numero)) {
+        alert("El número de domicilio debe tener máximo 4 dígitos");
+        numeroInput.focus();
+        return false;
+    }
+
+    return true;
+}
+var numeroInput = document.getElementById("numero");
+numeroInput.addEventListener("input", validarNumero);
+
+// Función para validar que el campo CP lleve 5 digito y todos numeros.
+function validarPostal() {
+    var postalInput = document.getElementById("codigoPostal");
+    var cPostal = postalInput.value.trim();
+
+    var regexPostal = /^\d{5}$/;
+    if (!regexPostal.test(cPostal)) {
+        alert("El Cógigo Postal debe tener 5 dígitos");
+        postalInput.focus();
+        return false;
+    }
+
+    return true;
+}
+var postalInput = document.getElementById("codigoPostal");
+postalInput.addEventListener("input", validarPostal);
+
+//Función para NO aceptar la opción seleccionar
+function checkSelection(elementId) {
+    var selectElement = document.getElementById(elementId);
+    var selectedOption = selectElement.value;
     
-    if (estado === "Ciudad de México") {
-      alcaldiaSelect.disabled = false;
-      removeOption(alcaldiaSelect, "No vivo en la Ciudad de México");
+    if (selectedOption === "Seleccionar") {
+      alert("La opción seleccionar es invalida. Por favor, elija otra opción.");
+      selectElement.selectedIndex = 0; // Deseleccionar la opción incorrecta
+      return false;
+
+    }
+    return true;
+  }
+
+  function validarFecha() {
+    var inputFecha = document.getElementById("fechaEvento");
+    var fechaSeleccionada = new Date(inputFecha.value);
+    var diaSeleccionado = fechaSeleccionada.getDay();
+    var horaSelect = document.getElementById("horaEvento");
+
+    // Obtener la fecha actual
+    var fechaActual = new Date();
+    fechaActual.setHours(0, 0, 0, 0); // Establecer la hora actual a las 00:00:00
+
+    // Verificar si la fecha seleccionada es anterior a la fecha actual
+    if (fechaSeleccionada < fechaActual) {
+        alert("No se puede seleccionar una fecha pasada o del día actual. Por favor, elija una fecha futura.");
+        inputFecha.value = ""; // Limpiar el valor del campo
+        inputFecha.classList.add("disabled"); // Agregar clase para desactivar y mostrar en gris
+        return false; // Impedir el envío del formulario
     } else {
-      alcaldiaSelect.disabled = true;
-      alcaldiaSelect.value = "No vivo en la Ciudad de México";
+        inputFecha.classList.remove("disabled"); // Quitar clase de desactivación
     }
-  }
-  //Función para remover opción "No vivo en la Ciudad de México"
-  function removeOption(selectElement, optionValue) {
-    var options = selectElement.options;
-    for (var i = 0; i < options.length; i++) {
-      if (options[i].value === optionValue) {
-        selectElement.remove(i);
-        break;
-      }
+
+    // Verificar si el día seleccionado no es jueves (4), viernes (5) o sábado (6)
+    if (diaSeleccionado !== 4 && diaSeleccionado !== 5 && diaSeleccionado !== 6) {
+        alert("No se ofrece servicio en el día seleccionado. Por favor, elija un jueves, viernes o sábado.");
+        inputFecha.value = ""; // Limpiar el valor del campo
+        inputFecha.classList.add("disabled"); // Agregar clase para desactivar y mostrar en gris
+        return false; // Impedir el envío del formulario
     }
-  }
+
+    // Limpiar opciones anteriores
+    horaSelect.innerHTML = "<option value=''>Seleccione un horario</option>";
+
+    switch (diaSeleccionado) {
+        case 4:
+            horaSelect.innerHTML += "<option value='12:00 pm'>12:00 pm</option>";
+            horaSelect.innerHTML += "<option value='7:00 pm'>7:00 pm</option>";
+            break;
+        case 5:
+            horaSelect.innerHTML += "<option value='2:00 pm'>2:00 pm</option>";
+            horaSelect.innerHTML += "<option value='9:00 pm'>9:00 pm</option>";
+            break;
+        case 6:
+            horaSelect.innerHTML += "<option value='9:00 am'>9:00 am</option>";
+            break;
+        default:
+            break;
+    }
+
+    return true; // Permitir el envío del formulario
+}
+

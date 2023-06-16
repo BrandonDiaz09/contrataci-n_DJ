@@ -8,10 +8,11 @@
   <title>.:: Reservaciones y contrataciones ::.</title>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kqIez27REHgP8aY6PLeiJieJx1sJGt7bOnSeaaC1qUWZh58EJtXWgmJUyvt3mAmP" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  <link rel="icon" type="image/png" href="./icono/form.png">
   <link rel="stylesheet" type="text/css" href="./styles/styles_form.css">
-      <link rel="stylesheet" href="./Styles/global.css">
+  <link rel="stylesheet" href="./Styles/global.css">
+  <link rel="stylesheet" href="./Styles/style.css">
   <script src="./JavaScript/form.js"></script>
+  <script src="./JavaScript/municipios.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
 </head>
 
@@ -55,14 +56,16 @@
     </nav>
 </header>
   
+  <div class="container" style="margin-top: 100px;">
     <div class="row">
       <div class="col-12">
-        <h1>Reservaciones y contrataciones</h1>
-        <h2>Por favor, ingrese los datos solicitados en el siguiente formulario, recuerde revisar muy bien los datos antes de enviar.</h2>
+        <h1 class="display-4 fw-semibold neon n-verde ">Reservaciones y contrataciones</h1>
+        <p>Por favor, ingrese los datos solicitados en el siguiente formulario, recuerde revisar muy bien los datos antes de enviar.</p>
+        <br>
       </div>
     </div>
 
-    <form action="./php/procesaDatos.php" method="post" class="animated-element" onsubmit="return validarRFC() && validarEdad() && validarNombre() && validarTelefono()">
+    <form action="./php/procesaDatos.php" method="post" class="animated-element" onsubmit="return validarRFC() && validarEdad() && validarNombre() && validarTelefono() && validarCalle() && validarNumero() && validarColonia() && validarPostal() && validarFecha() && checkSelection('menu') && checkSelection('salon') && checkSelection('alcaldia') && checkSelection('entidad')">
       <fieldset>
         <legend>Información de Contacto</legend>
         <div class="row">
@@ -102,8 +105,36 @@
 
         <div class="row">
           <div class="col-12">
+            <label for="calle">Calle:</label>
+            <input type="text" id="calle" name="calle" class="animated-element" placeholder="Nombre de la calle" onchange="validarCalle()" required><br>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-12">
+            <label for="numero">Número:</label>
+            <input type="number" id="numero" name="numero" class="animated-element" placeholder="Número de la casa" onchange="validarNumero()" required><br>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-12">
+            <label for="colonia">Colonia:</label>
+            <input type="text" id="colonia" name="colonia" class="animated-element" placeholder="Nombre de la colonia" onchange="validarColonia()" required><br>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-12">
+            <label for="codigoPostal">Código Postal:</label>
+            <input type="number" id="codigoPostal" name="codigoPostal" class="animated-element" placeholder="Código postal" onchange="validarPostal()" required><br>
+          </div>
+        </div>        
+
+        <div class="row">
+          <div class="col-12">
             <label for="entidad">Entidad Federativa:</label>
-            <select id="entidad" name="entidad" onchange="estadoSeleccionado()" required>
+            <select id="entidad" name="entidad" onchange="cargarMunicipios()" required>
               <option value="Seleccionar">Seleccionar</option>
               <option value="Aguascalientes">Aguascalientes</option>
               <option value="Baja California">Baja California</option>
@@ -143,26 +174,9 @@
 
         <div class="row">
           <div class="col-12">
-            <label for="alcaldia">Alcaldía (solo Ciudad de México):</label>
-            <select id="alcaldia" name="alcaldia" required>
-              <option value="">Selecciona una opción</option>
-              <option value="Álvaro Obregón">Álvaro Obregón</option>
-              <option value="Azcapotzalco">Azcapotzalco</option>
-              <option value="Benito Juárez">Benito Juárez</option>
-              <option value="Coyoacán">Coyoacán</option>
-              <option value="Cuajimalpa de Morelos">Cuajimalpa de Morelos</option>
-              <option value="Cuauhtémoc">Cuauhtémoc</option>
-              <option value="Gustavo A. Madero">Gustavo A. Madero</option>
-              <option value="Iztacalco">Iztacalco</option>
-              <option value="Iztapalapa">Iztapalapa</option>
-              <option value="La Magdalena Contreras">La Magdalena Contreras</option>
-              <option value="Miguel Hidalgo">Miguel Hidalgo</option>
-              <option value="Milpa Alta">Milpa Alta</option>
-              <option value="Tláhuac">Tláhuac</option>
-              <option value="Tlalpan">Tlalpan</option>
-              <option value="Venustiano Carranza">Venustiano Carranza</option>
-              <option value="Xochimilco">Xochimilco</option>
-              <option value="No vivo en la Ciudad de México">No vivo en la Ciudad de México</option>
+            <label for="municipio">Alcaldía/Municipio:</label>
+            <select id="municipio" name="municipio" required>
+              <option value="Seleccionar">Selecciona una opción</option>
             </select><br>
           </div>
         </div>
@@ -202,7 +216,30 @@
         <div class="row" id="campoEvento" style="display: none;">
           <div class="col-12">
             <label for="evento">Evento (A continuación escriba el tipo de evento que desea realizar): </label>
-            <input type="text" id="evento" name="evento" class="animated-element" placeholder="Aniversario"><br>
+            <input type="text" id="evento" name="evento" class="animated-element" placeholder="Ej. Aniversario"><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="tipo">Elija el salón de su preferencia:</label>
+            <select id="salon" name="salon" onchange="checkSelection('salon')" required>
+              <option value="Seleccionar">Seleccionar</option>
+              <option value="Salón Emperador">Salón Emperador</option>
+              <option value="Salón La Cúspide">Salón La Cúspide</option>
+              <option value="Salón Las Golondrinas">Jardín Las Golondrinas</option>
+            </select><br>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="tipo">Elija el menú de su preferencia:</label>
+            <select id="menu" name="menu" onchange="checkSelection('menu')" required>
+              <option value="Seleccionar">Seleccionar</option>
+              <option value="Menú para niños">Menú para niños</option>
+              <option value="Menú para adultos">Menú para adultos</option>
+            </select><br>
           </div>
         </div>
 
@@ -216,23 +253,26 @@
         <div class="row">
           <div class="col-12">
             <label for="fechaEvento">Fecha del evento:</label>
-            <input type="date" id="fechaEvento" name="fechaEvento" min="30/05/2023" class="animated-element" required><br>
+            <input type="date" id="fechaEvento" name="fechaEvento" min="2023-05-30" class="fecha-especial" onchange="validarFecha()" required><br>
           </div>
         </div>
-
+        
         <div class="row">
           <div class="col-12">
             <label for="horaEvento">Horario del evento:</label>
-            <input type="time" id="horaEvento" name="horaEvento" min="8:00:00" max="20:00:00" class="animated-element" required><br>
+            <select id="horaEvento" name="horaEvento" required>
+              <option value="">Seleccione un horario</option>
+            </select><br>
           </div>
         </div>
+        
       </fieldset>
 
           <button type="submit" class="btn btn-outline-light" id="registrar" style="font-weight: bold;">Registrar</button>
           <button type="reset" class="btn btn-outline-warning" id="limpiar" style="font-weight: bold;">Limpiar</button>
     </form>
     <br><br>
-
+  </div>
     <!-- FOOTER -->
 <footer class="text-white pt-5 pb-4 ">
   <div class="container text-center text-md-start">
@@ -255,7 +295,7 @@
                   <a href="#">Tu comprobante</a>
               </p>
               <p>
-                  <a href="#">Admin</a>
+                  <a href="#">Administrador</a>
               </p>
           </div>
           <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
