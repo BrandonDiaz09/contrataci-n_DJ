@@ -128,6 +128,33 @@ function validarColonia() {
 var coloniaInput = document.getElementById("colonia");
 coloniaInput.addEventListener("input", validarColonia);
 
+function limitarRango(valor, minimo, maximo) {
+    if (valor < minimo) {
+      return minimo;
+    } else if (valor > maximo) {
+      return maximo;
+    } else {
+      return valor;
+    }
+  }
+
+  function validarPersonas() {
+    var campoNumero = document.getElementById("numPersonas");
+    var valorIngresado = parseInt(campoNumero.value);
+    var valorLimitado = limitarRango(valorIngresado, 75, 200);
+
+    if (valorIngresado !== valorLimitado) {
+      alert("Por favor, ingresa un número válido entre 75 y 200.");
+      campoNumero.value = "";
+      campoNumero.focus();
+      return false; // Detiene el envío del formulario
+    }
+
+    return true; // Permite el envío del formulario
+  }
+var numPersonasInput = document.getElementById("numPersonas");
+numPersonasInput.addEventListener("input", validarPersonas);
+
 // Función para validar que el campo telefono lleve 10 digito y todos numeros.
 function validarTelefono() {
     var telefonoInput = document.getElementById("telefono");
