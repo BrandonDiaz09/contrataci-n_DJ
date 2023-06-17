@@ -214,7 +214,7 @@ function checkSelection(elementId) {
 
     // Verificar si el día seleccionado no es jueves (4), viernes (5) o sábado (6)
     if (diaSeleccionado !== 4 && diaSeleccionado !== 5 && diaSeleccionado !== 6) {
-        alert("No se ofrece servicio en el día seleccionado. Por favor, elija un jueves, viernes o sábado.");
+        alert("No se ofrece servicio en el día seleccionado. Por favor, elija un viernes, sábado o domingo.");
         inputFecha.value = ""; // Limpiar el valor del campo
         inputFecha.classList.add("disabled"); // Agregar clase para desactivar y mostrar en gris
         return false; // Impedir el envío del formulario
