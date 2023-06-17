@@ -18,8 +18,24 @@ function mostrarCampoEvento() {
     } else {
       campoEvento.style.display = "none";
     }
-  }  
+  }
 
+  function activarCampoOtro() {
+    var opcionesSelect = document.getElementById("opciones");
+    var campoEvento = document.getElementById("campoEvento");
+  
+    if (opcionesSelect.value === "otro") {
+      campoEvento.style.display = "block";
+      var campoTexto = document.getElementById("evento");
+      campoTexto.value = ""; // Limpiar el campo de texto
+      campoTexto.focus(); // Colocar el foco en el campo de texto
+    } else {
+      campoEvento.style.display = "none";
+      var campoTexto = document.getElementById("evento");
+      campoTexto.value = opcionesSelect.value; // Establecer el valor del campo de texto como el valor seleccionado
+    }
+  }
+  
 // Función para validar el campo RFC.
 function validarRFC() {
     var rfcInput = document.getElementById("rfc");
@@ -181,7 +197,6 @@ function checkSelection(elementId) {
     var inputFecha = document.getElementById("fechaEvento");
     var fechaSeleccionada = new Date(inputFecha.value);
     var diaSeleccionado = fechaSeleccionada.getDay();
-    var horaSelect = document.getElementById("horaEvento");
 
     // Obtener la fecha actual
     var fechaActual = new Date();
@@ -205,25 +220,31 @@ function checkSelection(elementId) {
         return false; // Impedir el envío del formulario
     }
 
-    // Limpiar opciones anteriores
+    return true;
+
+  }
+
+  function cargarHorario(){
+    var inputFecha = document.getElementById("fechaEvento");
+    var fechaSeleccionada = new Date(inputFecha.value);
+    var diaSeleccionado = fechaSeleccionada.getDay();
+    var horaSelect = document.getElementById("horaEvento");
+
     horaSelect.innerHTML = "<option value=''>Seleccione un horario</option>";
 
     switch (diaSeleccionado) {
         case 4:
-            horaSelect.innerHTML += "<option value='12:00 pm'>12:00 pm</option>";
-            horaSelect.innerHTML += "<option value='7:00 pm'>7:00 pm</option>";
+            horaSelect.innerHTML += "<option value='12:00 hrs - 17:00 hrs'>12:00 pm</option>";
+            horaSelect.innerHTML += "<option value='19:00 hrs - 24:00 hrs'>7:00 pm</option>";
             break;
         case 5:
-            horaSelect.innerHTML += "<option value='2:00 pm'>2:00 pm</option>";
-            horaSelect.innerHTML += "<option value='9:00 pm'>9:00 pm</option>";
+            horaSelect.innerHTML += "<option value='14:00 hrs - 19:00 hrs'>2:00 pm</option>";
+            horaSelect.innerHTML += "<option value='21:00 hrs - 2:00 hrs'>9:00 pm</option>";
             break;
         case 6:
-            horaSelect.innerHTML += "<option value='9:00 am'>9:00 am</option>";
+            horaSelect.innerHTML += "<option value='9:00 hrs - 14:00 hrs'>9:00 am</option>";
             break;
         default:
             break;
     }
-
-    return true; // Permitir el envío del formulario
 }
-

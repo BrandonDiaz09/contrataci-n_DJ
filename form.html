@@ -201,7 +201,7 @@
         <div class="row">
           <div class="col-12">
             <label for="tipo">Tipo de Evento:</label>
-            <select id="tipo" name="tipo" onchange="mostrarCampoEvento()" required>
+            <select id="tipo" name="tipo" onchange="mostrarCampoEvento() && activarCampoOtro()" required>
               <option value="Seleccionar">Seleccionar</option>
               <option value="Bautizo">Bautizo</option>
               <option value="Primera comunión">Primera comunión</option>
@@ -222,7 +222,7 @@
 
         <div class="row">
           <div class="col-12">
-            <label for="tipo">Elija el salón de su preferencia:</label>
+            <label for="salon">Elija el salón de su preferencia:</label>
             <select id="salon" name="salon" onchange="checkSelection('salon')" required>
               <option value="Seleccionar">Seleccionar</option>
               <option value="Salón Emperador">Salón Emperador</option>
@@ -234,7 +234,7 @@
 
         <div class="row">
           <div class="col-12">
-            <label for="tipo">Elija el menú de su preferencia:</label>
+            <label for="menu">Elija el menú de su preferencia:</label>
             <select id="menu" name="menu" onchange="checkSelection('menu')" required>
               <option value="Seleccionar">Seleccionar</option>
               <option value="Menú para niños">Menú para niños</option>
@@ -253,7 +253,7 @@
         <div class="row">
           <div class="col-12">
             <label for="fechaEvento">Fecha del evento:</label>
-            <input type="date" id="fechaEvento" name="fechaEvento" min="2023-05-30" class="fecha-especial" onchange="validarFecha()" required><br>
+            <input type="date" id="fechaEvento" name="fechaEvento" min="2023-05-30" class="fecha-especial" onchange="validarFecha() && cargarHorario()" required><br>
           </div>
         </div>
         
@@ -261,10 +261,10 @@
           <div class="col-12">
             <label for="horaEvento">Horario del evento:</label>
             <select id="horaEvento" name="horaEvento" required>
-              <option value="">Seleccione un horario</option>
+              <option value="Seleccionar">Selecciona una opción</option>
             </select><br>
           </div>
-        </div>
+        </div>      
         
       </fieldset>
 
