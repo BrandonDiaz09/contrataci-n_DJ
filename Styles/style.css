@@ -194,6 +194,10 @@ img {
 }
 .titulo{
   font-size:8rem;
+  animation-name: float;
+  animation-duration: 5s;
+  animation-timing-function: cubic-bezier(0.4,0.1,0.6,0.9);
+  animation-iteration-count: infinite;
 }
 .btn-neon{
   text-shadow: 0 0 5px #ff2301,
@@ -212,4 +216,17 @@ img {
 .btn-neon:hover{
   background: #fe4164;
   box-shadow: 0 0 10px #fe4164, 0 0 40px #fe4164, 0 0 80px #fe4164;
+}
+/*Floating*/
+
+@keyframes float{
+  0%{
+  transform: translateY(-10px);
+  }
+  50%{
+  transform: translateY(-35px);
+  }
+  100%{
+  transform: translateY(-10px);
+  }
 }
