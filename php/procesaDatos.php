@@ -60,8 +60,13 @@
       $folio = $rfc . $fechaSinGuiones;
       
       return $folio;
-  }  
-
+	} 
+   	session_name('DatosPDF');
+	session_start();
+	foreach($_POST as $Key => $Value){
+		$_SESSION[$Key] = $Value;
+		echo $_SESSION[$Key];
+	}
     $nombre = $_POST["nombre"];
     $patern = $_POST["paterno"];
     $matern = $_POST["materno"];
@@ -142,7 +147,7 @@
             <li>Hora en la que se celebrará el evento: <?php echo $hora; ?></li>
         </ul>
         <p>Folio generado: <?php echo $folio; ?></p>
-        <button type="submit" class="btn btn-outline-light" id="pdf" style="font-weight: bold;">Generar PDF</button>
+        <button type="submit" class="btn btn-outline-light" id="pdf" style="font-weight: bold;" onclick="window.location.href = 'GenerarPDF.php'">Generar PDF</button>
         <button type="submit" class="btn btn-outline-warning" id="modificar" style="font-weight: bold;" onclick="window.history.back()">Modificar datos</button>
     </div>
     <br><br>
