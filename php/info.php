@@ -1,4 +1,5 @@
-<?php
+
+	<?php
 
 require('fpdf185/fpdf.php');
 
@@ -77,7 +78,7 @@ $pdf->Cell(0, 8, utf8_decode('Datos de la Reservación'), 0, 1, 'C');
 $pdf->SetFont('Helvetica', '', 10);
 $pdf->Cell(40, 8, utf8_decode('Fecha:'), 1, 0, 'L');
 $pdf->Cell(0, 8, utf8_decode($fecha), 1, 1, 'L');
-$pdf->Cell(40, 8, utf8_decode('Horario:'), 1, 0, 'L');
+$pdf->Cell(40, 8, utf8_decode('Hora:'), 1, 0, 'L');
 $pdf->Cell(0, 8, utf8_decode($hora), 1, 1, 'L');
 $pdf->Cell(40, 8, utf8_decode('Salón:'), 1, 0, 'L');
 $pdf->Cell(0, 8, utf8_decode($salon), 1, 1, 'L');
@@ -93,12 +94,9 @@ $pdf->SetY(-40);
 $pdf->Cell(0, 10, utf8_decode('Folio: ' . $folio), 0, 1, 'C');
 
 //Enviar PDF
-
 ob_clean();
-$pdf->Output("D", "Comprobante_$folio.pdf");
-
-header('Content-Disposition: attachment; filename="Comprobante_' . $folio . '.pdf"');
-readfile("Comprobante_$folio.pdf");
-
+$pdf->Output('I','comprobante.pdf');
+header('Content-Disposition: attachment; filename="comprobante.pdf"');
+readfile('comprobante.pdf');
 exit;
 ?>
