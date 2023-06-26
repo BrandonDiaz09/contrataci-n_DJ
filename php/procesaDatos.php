@@ -86,7 +86,7 @@
     $botonConfirmacion = '<button type="submit">Generar PDF</button>';
     $botonModificar = '<button type="submit" onclick="window.history.back()">Modificar dato</button>';
 
-    $registroCliente="INSERT INTO Cliente (RFC, Nombre, ApellidoPaterno, ApellidoMaterno, Calle, NumeroCasa, Colonia, CodigoPostal, EntidadFederativa, AlcaldiaMunicipio, Telefono, CorreoElectronico, FechaNacimiento) VALUES ('$rfc','$nombre','$patern','$matern','$calle','$numeroDomicilio','$colonia','$codigoPostal','$entidad','$municipio','$telefono','$correo','$nacimiento')";
+    $registroCliente="INSERT INTO Cliente (RFC, Nombre, ApellidoPaterno, ApellidoMaterno, Calle, NumeroCasa, Colonia, CodigoPostal, EntidadFederativa, AlcaldiaMunicipio, Telefono, CorreoElectronico, FechaNacimiento) VALUES ('$rfc','$nombre','$patern','$matern','$calle','$numeroDomicilio','$colonia','$codigoPostal','$entidad','$municipio','$telefono','$mail','$nacimiento')";
 
     if($conexion->query($registroCliente)===TRUE){
         echo "Cliente registrado registroCliente";
