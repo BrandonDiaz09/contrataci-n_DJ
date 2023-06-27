@@ -108,6 +108,7 @@
     ?>
 =======
   <?php
+    require 'conexionBD.php';
     function generarFolio($rfc, $fechaEvento) {
       $fechaSinGuiones = str_replace("-", "", $fechaEvento);
       
@@ -142,6 +143,22 @@
     $folio = generarFolio($rfc, $fecha);
     $botonConfirmacion = '<button type="submit">Generar PDF</button>';
     $botonModificar = '<button type="submit" onclick="window.history.back()">Modificar dato</button>';
+
+    $registroCliente="INSERT INTO Cliente (RFC, Nombre, ApellidoPaterno, ApellidoMaterno, Calle, NumeroCasa, Colonia, CodigoPostal, EntidadFederativa, AlcaldiaMunicipio, Telefono, CorreoElectronico, FechaNacimiento) VALUES ('$rfc','$nombre','$patern','$matern','$calle','$numeroDomicilio','$colonia','$codigoPostal','$entidad','$municipio','$telefono','$mail','$nacimiento')";
+
+    if($conexion->query($registroCliente)===TRUE){
+        echo "Cliente registrado registroCliente";
+    } else{
+        echo "Error en la inserción: ".$conexion->error;
+    }
+    $registroContratacion="INSERT INTO Contratacion(Folio, RFCCliente, FechaEvento, Horario, TipoEvento, NumeroPersonas, SalonSeleccionado, MenuSeleccionado) VALUES ('$folio','$rfc','$fecha','$hora','$tipo','$numeroPersonas','$salon','$menu')";
+
+    if($conexion->query($registroContratacion)===TRUE){
+        echo "Contratación registrado correctamente";
+    } else{
+        echo "Error en la inserción: ".$conexion->error;
+    }
+    $conexion->close();
 ?>
 >>>>>>> admin
 
