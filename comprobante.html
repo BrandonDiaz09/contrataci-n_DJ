@@ -9,12 +9,76 @@
     <link rel="stylesheet" href="./Styles/global.css">
     <title>Comprobante</title>
 </head>
-<body>
+    <link rel="stylesheet" href="./Styles/global.css">
+<style>
+		body {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .dark-input {
+            background-color: #111;
+            color: #fff;
+        }
+
+        .dark-label {
+            color: #fff;
+        }
+		.floating{
+			animation-name: float;
+			animation-duration: 5s;
+			animation-timing-function: cubic-bezier(0.4,0.1,0.6,0.9);
+			animation-iteration-count: infinite;
+		}
+		@keyframes float{
+			0%{
+			transform: translateY(-10px);
+			}
+			50%{
+			transform: translateY(-35px);
+			}
+			100%{
+			transform: translateY(-10px);
+			}
+		}
+        .dark-button {
+            background-color: #333;
+            color: #fff;
+            border-color: #333;
+        }
+
+        .dark-button:hover {
+            background-color: rgba(255, 128, 255,0.95); 
+            color: #fff;
+            border-color: #7d5fa3;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.473),
+                        0 0 15px rgba(0, 247, 255, 0.459)
+                        ;
+        }
+        .nav-bar{
+            background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.7),
+                        -15rem 0rem 30px rgb(138, 36, 255),
+                        20rem 0rem 30px rgb(0, 174, 255)
+                        ;
+            font-family: var(--bs-body-font-family);
+        }
+
+        #login_window {
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0rem 0rem 20px rgb(255, 255, 255),
+                        0 1rem 40px rgba(255, 0, 234, 0.507),
+                        1px 1px 80px rgba(0, 162, 255, 0.61);
+        }
+		
+</style>
+<body style="height:100vh;">
     <!--Navbar-->
     <header >
         <nav class="navbar fixed-top navbar-bg  nav-masthead navbar-expand-lg navbar-dark p-md-3">
           <div class="container">
-              <a href="#" class="navbar-brand">LU 2</a>
+              <a href="#" class="navbar-brand">DJ BEAR</a>
               <button
                   class="navbar-toggler"
                   type="button"
@@ -48,7 +112,39 @@
           </div>
           </nav>
     </header>
-    <!-- FOOTER -->
+    
+	<div style="height: 80vh;">
+
+	<div class="container d-flex align-items-center justify-content-center vh-100">
+        <div class="row justify-content-center">
+			<div class="display-11 fw-semibold neon n-rosa floating" style="text-align: center;margin-bottom: 3vh;" id="titulo_inicio_secion_admin">
+				Bienvenido a la recuperacion <br> de comprobantes
+			</div>
+            <div class="col-md-12" id="login_window">
+                <span  class="neon-border ">
+                    <form action="php/admin_login.php" method="post">
+                        <div class="form-group">
+                            <label for="user" class="dark-label">Correo:</label>
+                            <input type="text" class="form-control dark-input" id="correo" name="correo" placeholder="Ingrese su correo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="dark-label">Folio:</label>
+                            <input type="password" class="form-control dark-input" id="folio" name="folio" placeholder="Ingrese su folio" required>
+                        </div>
+                        <div id="submit_container" class="text-right mt-3">
+                            <input type="submit" class="btn btn-primary btn-hover dark-button float-end" value="Ingresar" id="submit_button">
+                        </div>
+                    </form>
+                </span>
+            </div>
+        </div>
+    </div>
+		
+
+	</div>
+
+
+	<!-- FOOTER -->
 <footer class="text-white pt-5 pb-4 ">
     <div class="container text-center text-md-start">
         <div class="row text-center text-md-start">
@@ -61,16 +157,16 @@
                 <h5 class="text-uppercase mb-4 font-weight-bold">Dejanos ayudarte</h5>
                 <hr class="mb-4">
                 <p>
-                    <a href="#">Home</a>
+                    <a href="index.html">Home</a>
                 </p>
                 <p>
-                    <a href="#">Contratación</a>
+                    <a href="form.html">Contratación</a>
                 </p>
                 <p>
                     <a href="#">Tu comprobante</a>
                 </p>
                 <p>
-                    <a href="#">Admin</a>
+                    <a href="admin_login.html">Admin</a>
                 </p>
             </div>
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">

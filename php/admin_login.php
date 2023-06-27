@@ -3,7 +3,7 @@
 	$_SESSION["user"] = $_POST["user"];
 	$_SESSION["password"] = $_POST["password"];
 	
-	header("Location: ../admin_menu.html");
+	header("Location: admin_menu.php");
 	exit;
 
 ?>

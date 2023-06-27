@@ -10,7 +10,6 @@ function generarFolio($rfc, $fechaEvento) {
 }
 
 // Obtener los datos del formulario
-session_name('DatosPDF');
 session_start();
 $nombre = $_SESSION["nombre"];
 $paterno = $_SESSION["paterno"];
@@ -42,8 +41,8 @@ $pdf->SetFont('Helvetica', 'B', 12);
 $pdf->SetTextColor(0, 0, 0);
 
 // Agregar logo
-$pdf->Image('../Images/logo.jpg', 80, 5, 50); 
-$pdf->Ln(40);
+$pdf->Image('../Images/Eventos/LOGO.png', 80, 5, 50); 
+$pdf->Ln(50);
 
 // Título del comprobante
 $pdf->Cell(0, 10, utf8_decode('Comprobante de Reservación'), 0, 1, 'C');

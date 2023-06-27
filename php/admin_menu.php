@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-	<link href="Styles/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="./Styles/global.css">
+	<link href="../Styles/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../Styles/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
     <title>Administración</title>
     <style>
@@ -49,11 +49,12 @@
 </head>
 
 <body>
-    <!--Navbar-->
+    
+<!--Navbar-->
     <header >
         <nav class="navbar fixed-top navbar-bg  nav-masthead navbar-expand-lg navbar-dark p-md-3">
           <div class="container">
-              <a href="#" class="navbar-brand">LU 2</a>
+              <a href="#" class="navbar-brand">DJ BEAR</a>
               <button
                   class="navbar-toggler"
                   type="button"
@@ -70,16 +71,16 @@
                   <div class="mx-auto"></div>
                   <ul class="navbar-nav">
                       <li class="nav-item">
-                          <a class="nav-link fw-bold" aria-current="page" href="index.html">Home</a>
+                          <a class="nav-link fw-bold" aria-current="page" href="../index.html">Home</a>
                       </li>
                       <li  class="nav-item">
-                          <a class="nav-link fw-bold" href="form.html">Contratación</a>
+                          <a class="nav-link fw-bold" href="../form.html">Contratación</a>
                       </li>
                       <li  class="nav-item">
-                          <a class="nav-link fw-bold" href="comprobante.html">Comprobante</a>
+                          <a class="nav-link fw-bold" href="../comprobante.html">Comprobante</a>
                       </li>
                       <li  class="nav-item">
-                          <a class="nav-link fw-bold" href="admin_login.html">Admin</a>
+                          <a class="nav-link fw-bold" href="../admin_login.html">Admin</a>
                       </li>
 
                   </ul>
@@ -87,7 +88,7 @@
           </div>
           </nav>
     </header>
-    <div class="container justify-content-center content-align-center flex" style="padding-top: 4rem;">
+    <div class="container justify-content-center content-align-center flex" id="maintable" style="padding-top: 4rem; height: 85vh;">
         <h1 style="padding-top: 3rem; padding-bottom: 1rem;">Reservaciones</h1>
         <div class="row">
             <div class="col-md-12">
@@ -151,7 +152,7 @@
     <div id="Oculto" style="display: none;" >
         <span class="d-flex align-items-center justify-content-center w-100">
 
-            <form action="./php/procesaDatos.php" method="post" class="animated-element" onsubmit="return validarRFC() && validarEdad() && validarNombre() && validarTelefono() && validarPersonas() && validarCalle() && validarNumero() && validarColonia() && validarPostal() && validarFecha() && checkSelection('menu') && checkSelection('salon') && checkSelection('alcaldia') && checkSelection('entidad')">
+            <form action="procesaDatos.php" method="post" class="animated-element" onsubmit="return validarRFC() && validarEdad() && validarNombre() && validarTelefono() && validarPersonas() && validarCalle() && validarNumero() && validarColonia() && validarPostal() && validarFecha() && checkSelection('menu') && checkSelection('salon') && checkSelection('alcaldia') && checkSelection('entidad')">
                 <fieldset>
                   <legend>Agrega al nuevo cliente</legend>
                   <div class="row">
@@ -367,7 +368,13 @@
         <div class="row text-center text-md-start">
             <div class="text-center mb-2">
                 <p>
-                    Copyright Todos los derechos reservados.
+					Copyright Todos los derechos reservados.
+					<br>
+					<?php
+					session_start();
+					echo "Sesion actual: ";
+					echo $_SESSION["user"];
+					?>
                 </p>
             </div>
         </div>
@@ -379,13 +386,15 @@
         document.getElementById("agregarClienteBtn").addEventListener("click", function () {
             var ocultoDiv = document.getElementById("Oculto");
             if (ocultoDiv.style.display === "none") {
-                ocultoDiv.style.display = "block";
+				ocultoDiv.style.display = "block";
+				maintable.style.height = "45vh";
             } else {
-                ocultoDiv.style.display = "none";
+				ocultoDiv.style.display = "none";
+				maintable.style.height = "85vh";
             }
         });
     </script>
-<script src="Scripts/global.js"></script>  
+<script src="../Scripts/global.js"></script>  
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 
@@ -393,3 +402,4 @@
 </body>
 
 </html>
+
