@@ -119,7 +119,7 @@ $pdf->Cell(0, 10, utf8_decode('Folio: ' . $folio), 0, 1, 'C');
 
 //Enviar PDF
 ob_clean();
-$pdf->Output("D", "Comprobante_$folio.pdf");
+$pdf->Output("I", "Comprobante_$folio.pdf");
 
 header('Content-Disposition: attachment; filename="Comprobante_' . $folio . '.pdf"');
 readfile("Comprobante_$folio.pdf");
