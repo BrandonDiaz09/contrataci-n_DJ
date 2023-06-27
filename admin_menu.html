@@ -53,56 +53,280 @@
             </div>
           </nav>
     </header>
-    <!--Tabla-->
-    <main class="container content">
-        <h1>Panel de Administración</h1>
-        <table class="table table-dark">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Aquí se mostrarán los datos de la tabla -->
-            </tbody>
-        </table>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearModal">
-            Agregar
-        </button>
+    <div class="container justify-content-center content-align-center flex" style="padding-top: 4rem;">
+        <h1 style="padding-top: 3rem; padding-bottom: 1rem;">Reservaciones</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-primary mb-2" id="agregarClienteBtn">Agregar cliente</button>
+                <br>
+                <table class="table text-white">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Fecha</th>
+                            <th>Evento</th>
+                            <th>RFC</th>
+                            <th>Salon</th>
+                            <th>Menu</th>
+                            <th>Personas</th>
+                            <th>Hora</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se mostrarán los datos de la tabla -->
+                        <tr>
+                            <td>1</td>
+                            <td>Cliente 1</td>
+                            <td>2023-05-29</td>
+                            <td>Cumpleaños</td>
+                            <td>ABC123456789</td>
+                            <td>Salon emperadores</td>
+                            <td>Adulto</td>
+                            <td>200</td>
+                            <td>12:00</td>
+                            <td>
+                                <!-- Acciones CRUD -->
+                                <button class="btn btn-sm btn-info">Editar</button>
+                                <button class="btn btn-sm btn-danger">Eliminar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Cliente 2</td>
+                            <td>2023-05-29</td>
+                            <td>Cumpleaños</td>
+                            <td>ABC123456789</td>
+                            <td>Salon emperadores</td>
+                            <td>Adulto</td>
+                            <td>200</td>
+                            <td>12:00</td>
+                            <td>
+                                <!-- Acciones CRUD -->
+                                <button class="btn btn-sm btn-info">Editar</button>
+                                <button class="btn btn-sm btn-danger">Eliminar</button>
 
-        <!-- Modal para crear o editar elemento -->
-        <div class="modal fade" id="crearModal" tabindex="-1" role="dialog" aria-labelledby="crearModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="crearModalLabel">Agregar Elemento</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- Formulario para agregar o editar elemento -->
-                <form id="formulario">
-                    <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="descripcion">Descripción</label>
-                        <textarea class="form-control" id="descripcion" rows="3" required></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" id="guardarCambios">Guardar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </main>
+    </div>
+    <div id="Oculto" style="display: none;" >
+        <span class="d-flex align-items-center justify-content-center w-100">
 
+            <form action="./php/procesaDatos.php" method="post" class="animated-element" onsubmit="return validarRFC() && validarEdad() && validarNombre() && validarTelefono() && validarPersonas() && validarCalle() && validarNumero() && validarColonia() && validarPostal() && validarFecha() && checkSelection('menu') && checkSelection('salon') && checkSelection('alcaldia') && checkSelection('entidad')">
+                <fieldset>
+                  <legend>Agrega al nuevo cliente</legend>
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="nombre">Nombre:</label>
+                      <input type="text" id="nombre" name="nombre" class="animated-element" placeholder="Enrique" onchange="validarNombre()" required><br>
+                    </div>
+                  </div>
+          
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="paterno">Apellido Paterno:</label>
+                      <input type="text" id="paterno" name="paterno" class="animated-element" placeholder="Díaz" onchange="validarNombre()" required><br>
+                    </div>
+                  </div>
+          
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="materno">Apellido Materno:</label>
+                      <input type="text" id="materno" name="materno" class="animated-element" placeholder="Ortiz" onchange="validarNombre()" required><br>
+                    </div>
+                  </div>
+          
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="telefono">Teléfono:</label>
+                      <input type="tel" id="telefono" name="telefono" class="animated-element" placeholder="5544332211" onchange="validarTelefono()" required><br>
+                    </div>
+                  </div>
+          
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="correo">Correo Electrónico:</label>
+                      <input type="email" id="correo" name="correo" class="animated-element" placeholder="you@example.com" required><br>
+                    </div>
+                  </div>
+          
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="calle">Calle:</label>
+                      <input type="text" id="calle" name="calle" class="animated-element" placeholder="Nombre de la calle" onchange="validarCalle()" required><br>
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="numero">Número:</label>
+                      <input type="number" id="numero" name="numero" class="animated-element" placeholder="Número de la casa" onchange="validarNumero()" required><br>
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="colonia">Colonia:</label>
+                      <input type="text" id="colonia" name="colonia" class="animated-element" placeholder="Nombre de la colonia" onchange="validarColonia()" required><br>
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="codigoPostal">Código Postal:</label>
+                      <input type="number" id="codigoPostal" name="codigoPostal" class="animated-element" placeholder="Código postal" onchange="validarPostal()" required><br>
+                    </div>
+                  </div>        
+          
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="entidad">Entidad Federativa:</label>
+                      <select id="entidad" name="entidad" onchange="cargarMunicipios()" required>
+                        <option value="Seleccionar">Seleccionar</option>
+                        <option value="Aguascalientes">Aguascalientes</option>
+                        <option value="Baja California">Baja California</option>
+                        <option value="Baja California Sur">Baja California Sur</option>
+                        <option value="Campeche">Campeche</option>
+                        <option value="Coahuila">Coahuila</option>
+                        <option value="Colima">Colima</option>
+                        <option value="Chiapas">Chiapas</option>
+                        <option value="Chihuahua">Chihuahua</option>
+                        <option value="Ciudad de México">Ciudad de México</option>
+                        <option value="Durango">Durango</option>
+                        <option value="Guanajuato">Guanajuato</option>
+                        <option value="Guerrero">Guerrero</option>
+                        <option value="Hidalgo">Hidalgo</option>
+                        <option value="Jalisco">Jalisco</option>
+                        <option value="México">México</option>
+                        <option value="Michoacán">Michoacán</option>
+                        <option value="Morelos">Morelos</option>
+                        <option value="Nayarit">Nayarit</option>
+                        <option value="Nuevo León">Nuevo León</option>
+                        <option value="Oaxaca">Oaxaca</option>
+                        <option value="Puebla">Puebla</option>
+                        <option value="Querétaro">Querétaro</option>
+                        <option value="Quintana Roo">Quintana Roo</option>
+                        <option value="San Luis Potosí">San Luis Potosí</option>
+                        <option value="Sinaloa">Sinaloa</option>
+                        <option value="Sonora">Sonora</option>
+                        <option value="Tabasco">Tabasco</option>
+                        <option value="Tamaulipas">Tamaulipas</option>
+                        <option value="Tlaxcala">Tlaxcala</option>
+                        <option value="Veracruz">Veracruz</option>
+                        <option value="Yucatán">Yucatán</option>
+                        <option value="Zacatecas">Zacatecas</option>
+                      </select><br>
+                    </div>
+                  </div>
+          
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="municipio">Alcaldía/Municipio:</label>
+                      <select id="municipio" name="municipio" required>
+                        <option value="Seleccionar">Selecciona una opción</option>
+                      </select><br>
+                    </div>
+                  </div>
+          
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                      <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="animated-element" onchange="validarEdad()" required><br>
+                    </div>
+                  </div>
+          
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="rfc">RFC:</label>
+                      <input type="text" id="rfc" name="rfc" class="animated-element" onchange="validarRFC()" placeholder="PPMN00112222HHH" required><br>
+                    </div>
+                  </div>
+                </fieldset>
+          
+                <fieldset>
+                  <legend>Información del Evento</legend>
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="tipo">Tipo de Evento:</label>
+                      <select id="tipo" name="tipo" onchange="mostrarCampoEvento() && activarCampoOtro()" required>
+                        <option value="Seleccionar">Seleccionar</option>
+                        <option value="Bautizo">Bautizo</option>
+                        <option value="Primera comunión">Primera comunión</option>
+                        <option value="XV años">XV años</option>
+                        <option value="Boda">Boda</option>
+                        <option value="Cumpleaños">Cumpleaños</option>
+                        <option value="Otro">Otro</option>
+                      </select><br>
+                    </div>
+                  </div>
+          
+                  <div class="row" id="campoEvento" style="display: none;">
+                    <div class="col-12">
+                      <label for="evento">Evento (A continuación escriba el tipo de evento que desea realizar): </label>
+                      <input type="text" id="evento" name="evento" class="animated-element" placeholder="Ej. Aniversario"><br>
+                    </div>
+                  </div>
+          
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="salon">Elija el salón de su preferencia:</label>
+                      <select id="salon" name="salon" onchange="checkSelection('salon')" required>
+                        <option value="Seleccionar">Seleccionar</option>
+                        <option value="Salón Emperador">Salón Emperador</option>
+                        <option value="Salón La Cúspide">Salón La Cúspide</option>
+                        <option value="Salón Las Golondrinas">Jardín Las Golondrinas</option>
+                      </select><br>
+                    </div>
+                  </div>
+          
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="menu">Elija el menú de su preferencia:</label>
+                      <select id="menu" name="menu" onchange="checkSelection('menu')" required>
+                        <option value="Seleccionar">Seleccionar</option>
+                        <option value="Menú para niños">Menú para niños</option>
+                        <option value="Menú para adultos">Menú para adultos</option>
+                      </select><br>
+                    </div>
+                  </div>
+          
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="numPersonas">Número de Personas:</label>
+                      <input type="number" id="numPersonas" name="numPersonas" min="75" max="200" class="animated-element" placeholder="99" onchange="validarPersonas()" required><br>
+                    </div>
+                  </div>
+          
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="fechaEvento">Fecha del evento:</label>
+                      <input type="date" id="fechaEvento" name="fechaEvento" min="2023-05-30" class="fecha-especial" onchange="validarFecha() && cargarHorario()" required><br>
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="horaEvento">Horario del evento:</label>
+                      <select id="horaEvento" name="horaEvento" required>
+                        <option value="Seleccionar">Selecciona una opción</option>
+                      </select><br>
+                    </div>
+                  </div>      
+                  <br><br>
+                </fieldset>
+          
+                    <button type="submit" class="btn btn-outline-light" id="registrar" style="font-weight: bold;">Registrar</button>
+                    <button type="reset" class="btn btn-outline-warning" id="limpiar" style="font-weight: bold;">Limpiar</button>
+              </form>
+
+            <br><br>
+        </span>
+    </div>
     <!-- FOOTER -->
     <footer class="text-white pt-5 pb-4 footer">
         <div class="container text-center text-md-start">
@@ -114,34 +338,25 @@
                 </div>
             </div>
         </div>
-    </footer>
-</div>
+    </div>
+</footer>
 
-<script>
-    // Código JavaScript personalizado para manipular los datos y las interacciones
-    
-    // Función para agregar o editar elemento
-    function guardarCambios() {
-        // Obtener los valores del formulario
-        const nombre = document.getElementById('nombre').value;
-        const descripcion = document.getElementById('descripcion').value;
-        
-        // Aquí puedes realizar las operaciones de guardar o actualizar los datos en el backend
-        
-        // Cerrar el modal y limpiar el formulario
-        $('#crearModal').modal('hide');
-        $('#formulario')[0].reset();
-    }
-    
-    // Evento para mostrar el modal al hacer clic en el botón de agregar
-    document.getElementById('guardarCambios').addEventListener('click', guardarCambios);
-</script>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById("agregarClienteBtn").addEventListener("click", function () {
+            var ocultoDiv = document.getElementById("Oculto");
+            if (ocultoDiv.style.display === "none") {
+                ocultoDiv.style.display = "block";
+            } else {
+                ocultoDiv.style.display = "none";
+            }
+        });
+    </script>
 <script src="Scripts/global.js"></script>  
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+
+
 </body>
 
 </html>

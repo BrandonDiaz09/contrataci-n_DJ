@@ -53,42 +53,58 @@
           </nav>
     </header>
 
-  <?php
-    function generarFolio($rfc, $fechaEvento) {
-      $fechaSinGuiones = str_replace("-", "", $fechaEvento);
-      
-      $folio = $rfc . $fechaSinGuiones;
-      
-      return $folio;
-	} 
-   	session_name('DatosPDF');
-	session_start();
-	foreach($_POST as $Key => $Value){
-		$_SESSION[$Key] = $Value;
-	}
-    $nombre = $_POST["nombre"];
-    $patern = $_POST["paterno"];
-    $matern = $_POST["materno"];
-    $telefono = $_POST["telefono"];
-    $mail = $_POST["correo"];
-    $calle = $_POST["calle"];
-    $numeroDomicilio = $_POST["numero"];
-    $colonia = $_POST["colonia"];
-    $codigoPostal = $_POST["codigoPostal"];
-    $entidad = $_POST["entidad"];
-    $municipio = $_POST["municipio"];
-    $nacimiento = $_POST["fechaNacimiento"];
-    $rfc = $_POST["rfc"];
-    $tipo = $_POST["tipo"];
-    $salon = $_POST["salon"];
-    $menu = $_POST["menu"];
-    $numeroPersonas = $_POST["numPersonas"];
-    $fecha = $_POST["fechaEvento"];
-    $hora = $_POST["horaEvento"];
-    $folio = generarFolio($rfc, $fecha);
-    $botonConfirmacion = '<button type="submit">Generar PDF</button>';
-    $botonModificar = '<button type="submit" onclick="window.history.back()">Modificar dato</button>';
-?>
+    <?php
+        session_start();
+        require 'conexionBD.php';
+
+        function generarFolio($rfc, $fechaEvento) {
+        $fechaSinGuiones = str_replace("-", "", $fechaEvento);
+        
+        $folio = $rfc . $fechaSinGuiones;
+        
+        return $folio;
+        }  
+
+        // Obtener los datos de sesión
+        $nombre = $_SESSION['nombre'];
+        $patern = $_SESSION['paterno'];
+        $matern = $_SESSION['materno'];
+        $telefono = $_SESSION['telefono'];
+        $correo = $_SESSION['correo'];
+        $calle = $_SESSION['calle'];
+        $numeroDomicilio = $_SESSION['numero'];
+        $colonia = $_SESSION['colonia'];
+        $codigoPostal = $_SESSION['codigoPostal'];
+        $entidad = $_SESSION['entidad'];
+        $municipio = $_SESSION['municipio'];
+        $nacimiento = $_SESSION['fechaNacimiento'];
+        $rfc = $_SESSION['rfc'];
+        $tipo = $_SESSION['tipo'];
+        $salon = $_SESSION["salon"];
+        $menu = $_SESSION["menu"];
+        $numeroPersonas = $_SESSION["numPersonas"];
+        $fecha = $_SESSION["fechaEvento"];
+        $hora = $_SESSION["horaEvento"];
+        $folio = generarFolio($rfc, $fecha);
+        $botonConfirmacion = '<button type="submit">Generar PDF</button>';
+        $botonModificar = '<button type="submit" onclick="window.history.back()">Modificar dato</button>';
+
+        $registroCliente="INSERT INTO Cliente (RFC, Nombre, ApellidoPaterno, ApellidoMaterno, Calle, NumeroCasa, Colonia, CodigoPostal, EntidadFederativa, AlcaldiaMunicipio, Telefono, CorreoElectronico, FechaNacimiento) VALUES ('$rfc','$nombre','$patern','$matern','$calle','$numeroDomicilio','$colonia','$codigoPostal','$entidad','$municipio','$telefono','$correo','$nacimiento')";
+
+        if($conexion->query($registroCliente)===TRUE){
+            echo "Cliente registrado registroCliente";
+        } else{
+            echo "Error en la inserción: ".$conexion->error;
+        }
+        $registroContratacion="INSERT INTO Contratacion(Folio, RFCCliente, FechaEvento, Horario, TipoEvento, NumeroPersonas, SalonSeleccionado, MenuSeleccionado) VALUES ('$folio','$rfc','$fecha','$hora','$tipo','$numeroPersonas','$salon','$menu')";
+
+        if($conexion->query($registroContratacion)===TRUE){
+            echo "Contratación registrado correctamente";
+        } else{
+            echo "Error en la inserción: ".$conexion->error;
+        }
+        $conexion->close();
+    ?>
 
 <style>
    #pdf, #modificar{
@@ -131,7 +147,7 @@
             <li>Apellido Paterno: <?php echo $patern; ?></li>
             <li>Apellido Materno: <?php echo $matern; ?></li>
             <li>Teléfono: <?php echo $telefono; ?></li>
-            <li>Correo electrónico: <?php echo $mail; ?></li>
+            <li>Correo electrónico: <?php echo $correo; ?></li>
             <li>Domicilio: <?php echo $calle . ' ' . $numeroDomicilio . ', ' . $colonia . ', ' . $municipio . ', C.P. ' . $codigoPostal  . ', ' . $entidad  . ', México'; ?></li>
             <li>Fecha de nacimiento: <?php echo $nacimiento; ?></li>
             <li>Registro Federal de Contribuyente (RFC): <?php echo $rfc; ?></li>
